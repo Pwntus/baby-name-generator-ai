@@ -1,75 +1,34 @@
-# Nuxt 3 Minimal Starter
+# [BabyNameGeneratorAI.com](https://babynamegeneratorai.com)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## How it works
 
-## Setup
+This app is powered by:
 
-Make sure to install the dependencies:
+🚀 [Replicate](https://replicate.com/), a platform for running machine learning models in the cloud.
+
+✂ [Llama 3](https://replicate.com/meta/meta-llama-3-70b-instruct), A 70 billion parameter language model from Meta, fine tuned for chat completions.
+
+▲ [Vercel](https://vercel.com/), a platform for running web apps.
+
+⚡️ Nuxt.js [server-side API handlers](server/api), for talking to the Replicate API.
+
+📦 [NuxtUI](https://ui.nuxt.com/components/card), a UI Library for
+Modern Web Apps.
+
+## Run it yourself
+
+You need a [Replicate API token](https://replicate.com/account). Copy the contents of [.example.env](.example.env) into a new file in the root of your directory called `.env` and insert the API key there, like this:
 
 ```bash
-# npm
+# Get your Replicate API token at https://www.replicate.com/account
+NUXT_REPLICATE_API_TOKEN="<put your token here>"
+```
+
+Then, install the dependencies and run the local development server:
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Open http://localhost:3000 in your web browser. Done!
