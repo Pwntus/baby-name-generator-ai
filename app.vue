@@ -8,7 +8,7 @@
     class="sm:pb-16 md:pb-24 sm:px-6 lg:px-8"
   )
     .mx-auto.gap-4.flex.flex-row.max-w-5xl.items-center
-      //- img.max-h-8(src="/img/logo.svg")
+      img.max-h-8(src="/favicon.png")
       .text-base(
         class="md:text-2xl"
       ) Baby Name Generator AI
@@ -97,7 +97,7 @@
             | &amp; 
             span.font-bold.text-black {{ names[1] }}&nbsp;
             | should be named:
-          h1.text-4xl.font-bold.text-primary.text-lg(
+          h1.text-4xl.font-bold.text-primary(
             v-if="name"
             class="dark:text-white sm:text-5xl"
           ) {{ name }} 
@@ -215,6 +215,13 @@ export default {
         console.log('--- process output done: ', this.output)
         source.close()
         removeEventListeners()
+
+        this.$nextTick(() => {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+          })
+        })
 
         this.loading = false
       }
