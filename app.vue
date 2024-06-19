@@ -88,21 +88,41 @@
     v-if="name || description"
     class="sm:mb-16 md:mb-24 sm:px-6 lg:px-8"
   )
-    u-card
+    u-card(ref="card")
       template(#header)
-        h1.text-center.text-3xl.font-bold.tracking-tight.text-gray-900(
-          v-if="name"
-          class="dark:text-white sm:text-5xl"
-        )
-          span.text-primary {{ name }} 
-      p.text-lg.tracking-tight.text-gray-700(
+        .text-center
+          .text-sm.text-gray-500.mb-2
+            | The baby of 
+            span.font-bold.text-black {{ names[0] }}&nbsp;
+            | &amp; 
+            span.font-bold.text-black {{ names[1] }}&nbsp;
+            | should be named:
+          h1.text-3xl.font-bold.text-primary.text-lg(
+            v-if="name"
+            class="dark:text-white sm:text-5xl"
+          ) {{ name }} 
+      .text-lg.text-gray-700.tracking-tight(
         v-if="description"
         class="dark:text-gray-100"
       ) {{ description }}
+      template(#footer)
+        .text-center.text-sm.font-bold.text-black
+          img.w-5.mr-4.inline(
+            src="/favicon.png"
+          )
+          | BabyNameGeneratorAI.com
+    u-button.mt-8(
+      @click="share"
+      size="xl"
+      trailing-icon="i-heroicons-paper-airplane"
+      variant="ghost"
+      block
+    ) Share Name
 </template>
 
 <script>
 import { useLocalStorage, StorageSerializers } from '@vueuse/core'
+import html2canvas from 'html2canvas'
 
 export default {
   name: 'app',
@@ -210,6 +230,13 @@ export default {
       source.addEventListener('output', handleOutput)
       source.addEventListener('done', handleDone)
       source.addEventListener('error', handleError)
+    },
+    async share() {
+      const canvas = await html2canvas(this.$refs.card.$el)
+      const link = document.createElement('a')
+      link.download = 'babynamegeneratorai.com.png'
+      link.href = canvas.toDataURL()
+      link.click()
     }
   }
 }
