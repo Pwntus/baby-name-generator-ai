@@ -85,6 +85,7 @@
       ) Generate
 
   .mx-auto.mb-8.px-4.max-w-xl(
+    v-if="name || description"
     class="sm:mb-16 md:mb-24 sm:px-6 lg:px-8"
   )
     u-card
