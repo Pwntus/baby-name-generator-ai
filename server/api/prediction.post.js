@@ -30,16 +30,15 @@ export default defineEventHandler(async (event) => {
         stop_sequences: '<|end_of_text|>,<|eot_id|>',
         length_penalty: 1,
         presence_penalty: 1.15,
-        seed: 1337,
-        system_prompt: 'You are a name suggester machine.',
-        prompt: `Make a new ${gender}name suggestion based on the following names: ${names.join(
+        system_prompt: 'You are a baby name generator.',
+        prompt: `Make a new ${gender}baby name suggestion based on the following parent names: ${names.join(
           ', '
-        )}. You only reply with the new name. The name can be multiple words. You output the explanation on a new line.`,
+        )}. You only reply with the new name. The name should be 1-3 words. You output the explanation on a new line.`,
         prompt_template: `<|begin_of_text|><|start_header_id|>system<|end_header_id|>
 
-        {system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
-        
-        {prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 `
       }
     })
